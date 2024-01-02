@@ -79,6 +79,25 @@ public class LinkedList {
         return prevHead.val;
     }
 
+    public Node get(int index) {
+        if (this.length == 0 || index >= this.length)
+            return new Node(-1);
+        Node current = this.head;
+
+        while (index != 0) {
+            current = current.next;
+            index--;
+        }
+        return current;
+    }
+
+    public void set(int index, int val) {
+        Node posNode = this.get(index);
+        if (posNode.val == -1)
+            return;
+        posNode.val = val;
+    }
+
     public void print() {
         if (this.length == 0) {
             System.out.print("[]");
