@@ -45,6 +45,34 @@ public class LinkedList {
 
     }
 
+    public void unshift(int val) {
+        Node newNode = new Node(val);
+
+        if (this.head == null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+    }
+
+    public int shift() {
+        Node prevHead = this.head;
+
+        if (this.length > 1) {
+            Node newHead = prevHead.next;
+            prevHead.next = null;
+            this.head = newHead;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
+        this.length--;
+        return prevHead.val;
+    }
+
     public void print() {
         if (this.length == 0) {
             System.out.print("[]");
