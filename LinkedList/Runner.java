@@ -53,7 +53,8 @@ public class Runner {
 
         // list.insert(3, 99);
 
-        list.remove(3);
+        // list.remove(3);
+        list.reverse();
         list.print();
 
     }
