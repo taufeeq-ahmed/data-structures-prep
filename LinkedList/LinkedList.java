@@ -92,10 +92,10 @@ public class LinkedList {
     }
 
     public void set(int index, int val) {
-        Node posNode = this.get(index);
-        if (posNode.val == -1)
+        Node foundNode = this.get(index);
+        if (foundNode.val == -1)
             return;
-        posNode.val = val;
+        foundNode.val = val;
     }
 
     public void print() {
