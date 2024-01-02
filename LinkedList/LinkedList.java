@@ -24,6 +24,9 @@ public class LinkedList {
     }
 
     public int pop() {
+        if (this.head == null)
+            return -1;
+
         Node current = this.head;
         Node prev = this.head;
 
@@ -59,6 +62,9 @@ public class LinkedList {
     }
 
     public int shift() {
+        if (this.head == null)
+            return -1;
+
         Node prevHead = this.head;
 
         if (this.length > 1) {
