@@ -46,9 +46,14 @@ public class Runner {
         // System.out.println("remoed " + list.shift());
         // list.print();
 
-        list.set(3, 99);
-        list.set(0, 102);
-        list.set(9, 102);
+        // list.set(3, 99);
+        // list.set(0, 102);
+        // list.set(9, 102);
+        // list.print();
+
+        // list.insert(3, 99);
+
+        list.remove(3);
         list.print();
 
     }

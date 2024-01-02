@@ -98,6 +98,49 @@ public class LinkedList {
         foundNode.val = val;
     }
 
+    public void insert(int index, int val) {
+        if (index < 0 || index > this.length)
+            return;
+
+        if (index == 0)
+            this.unshift(val);
+        else if (index == this.length) {
+            this.push(val);
+        } else {
+
+            Node newNode = new Node(val);
+
+            Node current = this.get(index - 1);
+
+            Node nextNode = current.next;
+
+            current.next = newNode;
+            newNode.next = nextNode;
+            this.length++;
+        }
+    }
+
+    public int remove(int index) {
+        if (index < 0 || index >= this.length)
+            return -1;
+
+        if (index == 0)
+            return this.shift();
+        else if (index == this.length - 1)
+            return this.pop();
+        else {
+            Node prevNode = this.get(index - 1);
+            Node removingNode = prevNode.next;
+            Node nextNode = removingNode.next;
+
+            prevNode.next = nextNode;
+            removingNode.next = null;
+
+            this.length--;
+            return removingNode.val;
+        }
+    }
+
     public void print() {
         if (this.length == 0) {
             System.out.print("[]");
