@@ -1,5 +1,8 @@
 package BST;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BST {
     Node root;
 
@@ -8,8 +11,9 @@ public class BST {
     }
 
     public void insert(int val) {
+        Node newNode = new Node(val);
         if (this.root == null) {
-            this.root = new Node(val);
+            this.root = newNode;
             return;
         }
 
@@ -20,13 +24,13 @@ public class BST {
 
             if (current.val > val) {
                 if (current.left == null) {
-                    current.left = current;
+                    current.left = newNode;
                     return;
                 } else
                     current = current.left;
             } else {
                 if (current.right == null) {
-                    current.right = current;
+                    current.right = newNode;
                     return;
                 } else
                     current = current.right;
@@ -50,4 +54,52 @@ public class BST {
         return null;
     }
 
+    public void recursiveBFS(Queue<Node> q) {
+        if (q.isEmpty()) {
+            return;
+        }
+
+        Node current = q.poll();
+        System.out.println(current.val);
+        if (current.left != null) {
+            q.offer(current.left);
+        }
+        if (current.right != null) {
+            q.offer(current.right);
+        }
+
+        recursiveBFS(q);
+    }
+
+    public void BFS() {
+        if (this.root == null)
+            return;
+
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+        recursiveBFS(q);
+    }
+
+    // in-order dfs
+    public void recursiveDFS(Node root) {
+        if (this.root == null)
+            return;
+
+        Node current = root;
+
+        if (current.left != null)
+            recursiveDFS(current.left);
+
+        System.out.println(current.val);
+
+        if (current.right != null)
+            recursiveDFS(current.right);
+    }
+
+    public void DFS() {
+        if (this.root == null)
+            return;
+
+        recursiveDFS(root);
+    }
 }
