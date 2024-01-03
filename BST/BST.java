@@ -54,30 +54,18 @@ public class BST {
         return null;
     }
 
-    public void recursiveBFS(Queue<Node> q) {
-        if (q.isEmpty()) {
-            return;
-        }
-
-        Node current = q.poll();
-        System.out.println(current.val);
-        if (current.left != null) {
-            q.offer(current.left);
-        }
-        if (current.right != null) {
-            q.offer(current.right);
-        }
-
-        recursiveBFS(q);
-    }
-
     public void BFS() {
-        if (this.root == null)
-            return;
-
         Queue<Node> q = new LinkedList<>();
-        q.offer(root);
-        recursiveBFS(q);
+        q.offer(this.root);
+
+        while (q.size() != 0) {
+            Node current = q.poll();
+            System.out.println(current.val);
+            if (current.left != null)
+                q.offer(current.left);
+            if (current.right != null)
+                q.offer(current.right);
+        }
     }
 
     // in-order dfs
