@@ -35,4 +35,19 @@ public class BST {
 
     }
 
+    public Node find(int val) {
+        Node current = this.root;
+
+        while (current != null) {
+            if (current.val == val) {
+                return current;
+            } else if (current.val < val) {
+                current = current.right;
+            } else {
+                current = current.left;
+            }
+        }
+        return null;
+    }
+
 }
