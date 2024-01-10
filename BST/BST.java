@@ -4,33 +4,33 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BST {
-    Node root;
+    TreeNode root;
 
     BST() {
         this.root = null;
     }
 
     public void insert(int val) {
-        Node newNode = new Node(val);
+        TreeNode newTreeNode = new TreeNode(val);
         if (this.root == null) {
-            this.root = newNode;
+            this.root = newTreeNode;
             return;
         }
 
-        Node current = root;
+        TreeNode current = root;
         while (true) {
             if (current.val == val)
                 return;
 
             if (current.val > val) {
                 if (current.left == null) {
-                    current.left = newNode;
+                    current.left = newTreeNode;
                     return;
                 } else
                     current = current.left;
             } else {
                 if (current.right == null) {
-                    current.right = newNode;
+                    current.right = newTreeNode;
                     return;
                 } else
                     current = current.right;
@@ -39,8 +39,8 @@ public class BST {
 
     }
 
-    public Node find(int val) {
-        Node current = this.root;
+    public TreeNode find(int val) {
+        TreeNode current = this.root;
 
         while (current != null) {
             if (current.val == val) {
@@ -55,11 +55,11 @@ public class BST {
     }
 
     public void BFS() {
-        Queue<Node> q = new LinkedList<>();
+        Queue<TreeNode> q = new LinkedList<>();
         q.offer(this.root);
 
         while (q.size() != 0) {
-            Node current = q.poll();
+            TreeNode current = q.poll();
             System.out.println(current.val);
             if (current.left != null)
                 q.offer(current.left);
@@ -69,11 +69,11 @@ public class BST {
     }
 
     // in-order dfs
-    public void recursiveDFS(Node root) {
+    public void recursiveDFS(TreeNode root) {
         if (this.root == null)
             return;
 
-        Node current = root;
+        TreeNode current = root;
 
         if (current.left != null)
             recursiveDFS(current.left);
